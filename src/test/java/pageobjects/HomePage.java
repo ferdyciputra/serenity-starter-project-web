@@ -7,17 +7,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.BaseTest;
 
 public class HomePage extends PageObject {
-    private final String URL_TOKOPEDIA_HOME_PAGE = BaseTest.getBaseUrl();
-    private final By SELECTOR_INPUT_SEARCH = By.cssSelector("input[data-unify='Search']");
+    private final String URL_HOME_PAGE = BaseTest.getBaseUrl();
+    private final By SELECTOR_INPUT_SEARCH = By.id("search");
+    private final By SELECTOR_SEARCH_BUTTON = By.cssSelector("button[title='Search']");
 
-    public void openUrlTokopediaHomePage() {
-        openUrl(URL_TOKOPEDIA_HOME_PAGE);
-        waitFor(ExpectedConditions.urlToBe(URL_TOKOPEDIA_HOME_PAGE));
+    public void openUrl(){
+        openUrl(URL_HOME_PAGE);
+        waitFor(ExpectedConditions.urlToBe(URL_HOME_PAGE));
     }
 
     public void searchKeyword(String keyword) {
         waitFor(ExpectedConditions.visibilityOfElementLocated(SELECTOR_INPUT_SEARCH));
         typeInto(find(SELECTOR_INPUT_SEARCH), keyword);
-        typeInto(find(SELECTOR_INPUT_SEARCH), String.valueOf(Keys.ENTER));
+        clickOn(find(SELECTOR_SEARCH_BUTTON));
+
+        waitFor(ExpectedConditions.urlContains("catalogsearch"));
     }
 }

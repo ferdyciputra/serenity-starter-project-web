@@ -16,12 +16,12 @@ public class SearchProductSteps {
     @Steps
     SearchResultPage searchResultPage;
 
-    @Given("User navigate to the Tokopedia Home page")
-    public void userNavigateToTheTokopediaHomePage() {
-        homePage.openUrlTokopediaHomePage();
+    @Given("User navigate to the online store home page")
+    public void userNavigateToTheOnlineStoreHomePage() {
+        homePage.openUrl();
     }
 
-    @When("User search for keyword {string} in search box and click Enter")
+    @When("User search for keyword {string} in search box and click button search")
     public void userSearchForKeywordInSearchBox(String keyword) {
         homePage.searchKeyword(keyword);
     }
@@ -34,10 +34,10 @@ public class SearchProductSteps {
         Assert.assertTrue(message, actualResultProduct.contains(expectedKeywordSearch.toLowerCase()));
     }
 
-    @Then("User can see icon product not available in result page")
-    public void userCanSeeIconProductNotAvailableInResultPage() {
-        String message = "Icon Product Not Available should be displayed, but found not displayed.";
+    @Then("User can see info message {string}")
+    public void userCanSeeInfoMessage(String expectedMessage) {
+        String actualMessage = searchResultPage.getInfoMessage();
 
-        Assert.assertTrue(message, searchResultPage.isIconProductNotAvailableDisplayed());
+        Assert.assertEquals(expectedMessage, actualMessage);
     }
 }
