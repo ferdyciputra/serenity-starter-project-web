@@ -19,6 +19,8 @@ public class HomePage extends PageObject {
     public void searchKeyword(String keyword) {
         waitFor(ExpectedConditions.visibilityOfElementLocated(SELECTOR_INPUT_SEARCH));
         typeInto(find(SELECTOR_INPUT_SEARCH), keyword);
+
+        waitFor(ExpectedConditions.elementToBeClickable(SELECTOR_SEARCH_BUTTON));
         clickOn(find(SELECTOR_SEARCH_BUTTON));
 
         waitFor(ExpectedConditions.urlContains("catalogsearch"));
