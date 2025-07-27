@@ -1,3 +1,4 @@
+@search_product_feature
 Feature: Search Product
   As a User,
   I want to see search product functionality working as expected

@@ -56,6 +56,14 @@ file `serenity.conf` located in folder `src/test/resources`
 mvn clean verify -Denvironment=value
 ```
 
+## Running Test Case with Specific Tags
+
+If you want to run only certain scenarios or feature files based on tags (e.g., `@add_cart_feature`), you can do so using the command line by specifying the tag with `-Dtags`.
+
+```
+mvn clean verify -Dtags=@add_cart_feature
+```
+
 ## See Report Serenity BDD
 
 - file report located in `target/site/serenity/index.html`
